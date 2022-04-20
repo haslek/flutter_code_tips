@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_code_tips/animation_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
-class NamedConstructor{
+
+class NamedConstructor {
   NamedConstructor.name1(this.name1);
   NamedConstructor.anotherName(double anotherName)
       : name1 = (anotherName + 3) / 2;
   double name1;
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -66,26 +69,25 @@ class _MyHomePageState extends State<MyHomePage> {
     //   _counter++;
     // });
   }
-  void _collectionIfAndSpreadsWithMaps(){
+
+  void _collectionIfAndSpreadsWithMaps() {
     const addRatings = true;
     const restaurant = {
-      'name':'Pizza Coder',
-      'cuisine':'Lekan Coder',
-      if(addRatings) ...{
-        'average':6.9,
-        'numRatings':40
-      }
+      'name': 'Pizza Coder',
+      'cuisine': 'Lekan Coder',
+      if (addRatings) ...{'average': 6.9, 'numRatings': 40}
     };
     print(restaurant);
   }
-  void _nullAwareMapIteration(){
+
+  void _nullAwareMapIteration() {
     const restaurant = {
-      'name':'Pizza Coder',
-      'cuisine':'Lekan Coder',
-        'average':6.9,
-        'numRatings':40
+      'name': 'Pizza Coder',
+      'cuisine': 'Lekan Coder',
+      'average': 6.9,
+      'numRatings': 40
     };
-    for(var entry in restaurant.entries){
+    for (var entry in restaurant.entries) {
       print('${entry.key} : ${entry.value}');
     }
   }
@@ -131,6 +133,14 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AnimationPage()));
+                },
+                child: const Text('To animation screen'))
           ],
         ),
       ),
